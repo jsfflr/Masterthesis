@@ -1,20 +1,31 @@
-\chapter{Einführung}
+\chapter{Introduction} % könnte eigentlich schon fast gestrichen werden
+
 \begin{quote}
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam \cite{smith2020example} , quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit \cite{doe2019research}  esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum \cite{lee2018conference} 
-\end{quote} 
+The goal of software architecture is to minimize the human resources required to build and maintain the required system.
+\end{quote} Robert C. Martin in Clean Architecture
 
-\section{Problembeschreibung/Motivation}
 
-Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
+\section{Problem description/Motivation}
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore \cite{miller2017chapter}  veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut \cite{website2021example}  odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+\begin{itemize}
+	\item Current API can't be reengineered, because of legacy code and high risk of ruining the current functionalities
+	\item Clients are coupled to the current old api and to be able to communicate with this service, it has to implement the old api technology 
+	\item This is a big effort, because the knowledge of older technologies are not available at newer developer, old technologies relays on older datatypes so that the development time can be increased and also the performance could be worse, because the data package are bigger and the parser for the datatypes are slower (see SOAP vs REST) % TODO: und hier ein paar Quellen einfügen, welche SOAP vs REST zeigen und generell the thesis unterstützen, dass neuere APIs grundsätzlich besser sind (sonst gäbe es ja keinen Grund diese zu entwickeln, wenn es nicht das Ziel zu Verbesserung eines Problems gäbe)
+	\item Interoperability is also a bigger topic in the domain of IoT, where heterogeneous protocols have to communicate with each other
+	\item We assuming in the problem description that we have a service with an api which is not capable to communicate with a client, because the protocol differs. For that the service has to
+\end{itemize}
 
 % Beispiel: Hinweisbox (kurze Tipps oder Zusammenfassungen)
 \begin{tcolorbox}[arc=3mm, boxrule=0pt, leftrule=4pt, left=10pt]
 Diese Art von Box eignet sich besonders gut, um zwischen sachlichen Abschnitten kurze Zusammenfassungen oder wichtige Hinweise einzufügen – etwa am Kapitelende oder zwischen methodischen Schritten.
 \end{tcolorbox}
 
-\section{Ziele dieser Arbeit}
+
+\section{Goals of the work}
+
+\begin{itemize}
+	\item 
+\end{itemize}
 
 % Beispiel: Zentrale Infobox (Forschungsfragen, Definitionen, wichtige Aspekte)
 \begin{center}
@@ -26,8 +37,25 @@ Diese Box dient der übersichtlichen Darstellung wichtiger Inhalte wie Forschung
 \end{minipage}
 \end{center}
 
-\section{Vorgehensweise/Methode}
+\subsection{Research Questions}
 
-\section{Abgrenzung}
 
-\section{Struktur der Arbeit}
+\section{Procedure/Methode}
+
+\section{Limitations/Boundaries}
+
+\begin{itemize}
+	\item No transformations on network layer
+	\item Just focus on request-response communication protocols - so we don't need to check the behavioural structure of the protocols. We can assume that we just transform between protocols with the same behavioural structure % TODO: what is about api splitting and merging? In this case we also need some kind of state-machines (first call api-1, then api-2, then merge the two responses and send back to client).
+	\item Should i solve authorization? % TODO: check which kind of usages are there in an distributed communication (caching, authorization, different datatypes/media-types, ...).
+	\item Focus on Web-API's \cite{geewaxAPIDesignPatterns2021} (see \ref{fig:test})
+\end{itemize}
+
+\begin{figure}[b]
+  \centering
+  \includegraphics[width=1.0\textwidth]{../images/web-api-definition.png}
+  \caption{Web-API-Definition \cite{geewaxAPIDesignPatterns2021}.}
+  \label{fig:test}
+\end{figure}
+
+\section{Structure of the work}
